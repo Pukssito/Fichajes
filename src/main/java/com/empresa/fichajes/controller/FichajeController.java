@@ -1,7 +1,7 @@
 package com.empresa.fichajes.controller;
 
 import com.empresa.fichajes.entity.Fichaje;
-import com.empresa.fichajes.repository.FichajeRepository;
+import com.empresa.fichajes.Dao.FichajeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class FichajeController {
 
     @Autowired
-    private FichajeRepository fichajeRepository;
+    private FichajeDao fichajeRepository;
 
     @PostMapping("/fichar")
     public Fichaje fichar(@RequestBody Fichaje fichaje) {

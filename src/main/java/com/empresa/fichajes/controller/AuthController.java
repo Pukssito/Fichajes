@@ -1,8 +1,8 @@
 package com.empresa.fichajes.controller;
 
 import com.empresa.fichajes.entity.Usuario;
-import com.empresa.fichajes.security.JwtUtil;
-import com.empresa.fichajes.service.AuthService;
+import com.empresa.fichajes.service.security.JwtUtil;
+import com.empresa.fichajes.service.security.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
