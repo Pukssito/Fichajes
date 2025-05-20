@@ -1,4 +1,4 @@
-package com.empresa.fichajes.security;
+package com.empresa.fichajes.service.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

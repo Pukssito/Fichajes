@@ -1,4 +1,4 @@
-package com.empresa.fichajes.security;
+package com.empresa.fichajes.service.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

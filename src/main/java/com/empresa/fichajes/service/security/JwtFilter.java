@@ -1,7 +1,7 @@
-package com.empresa.fichajes.security;
+package com.empresa.fichajes.service.security;
 
 import com.empresa.fichajes.entity.Usuario;
-import com.empresa.fichajes.repository.UsuarioRepository;
+import com.empresa.fichajes.Dao.UsuarioDao;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +23,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioDao usuarioRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
