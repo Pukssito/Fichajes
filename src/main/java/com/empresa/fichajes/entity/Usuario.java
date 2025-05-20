@@ -2,6 +2,8 @@ package com.empresa.fichajes.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Usuario {
 
@@ -13,6 +15,8 @@ public class Usuario {
     private String email;
     private String password;
     private String rol;
+    @OneToMany(mappedBy = "usuario")
+    private List<Fichaje> fichajes;
 
     // Getters y setters
     public Long getId() { return id; }
@@ -29,4 +33,12 @@ public class Usuario {
 
     public String getRol() { return rol; }
     public void setRol(String rol) { this.rol = rol; }
+
+    public List<Fichaje> getFichajes() {
+        return fichajes;
+    }
+
+    public void setFichajes(List<Fichaje> fichajes) {
+        this.fichajes = fichajes;
+    }
 }
