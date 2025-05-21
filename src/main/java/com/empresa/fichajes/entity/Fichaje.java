@@ -10,9 +10,6 @@ public class Fichaje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "usuario_id", nullable = false)
-    private Long usuarioId;
-
     @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
 
@@ -43,13 +40,8 @@ public class Fichaje {
     public void setId(Long id) {
         this.id = id;
     }
-
     public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+        return usuario != null ? usuario.getId() : null;
     }
 
     public LocalDateTime getFechaHora() {

@@ -5,16 +5,16 @@ import com.empresa.fichajes.entity.Fichaje;
 import com.empresa.fichajes.entity.Usuario;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-public abstract class FichajeDaoImpl implements FichajeDao  {
+@Repository
+public class FichajeDaoImpl implements FichajeDao  {
 
     @Autowired
     private EntityManager em;
 
-    @Autowired
-    private FichajeDao fichajeDao;
+
 
     @Override
     public List<Fichaje> obtenerFichajesPorEmail(String email) {
@@ -26,11 +26,13 @@ public abstract class FichajeDaoImpl implements FichajeDao  {
 
     @Override
     public Usuario findByUsuarioId(Integer id) {
-        return fichajeDao.findByUsuarioId(id);
-
+        return em.createQuery("SELECT u FROM Usuario u WHERE u.id = :id", Usuario.class)
+                .setParameter("id", id)
+                .getSingleResult();
     }
+
     @Override
-    public void deleteById(Integer id) {
-        fichajeDao.deleteById(id);
+    public Fichaje save(Fichaje fichaje) {
+        return null;
     }
 }

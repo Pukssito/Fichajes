@@ -28,10 +28,6 @@ public class FichajeController {
         return fichajeDao.findByUsuarioId(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteFichaje(@PathVariable Integer id) {
-        fichajeDao.deleteById(id);
-    }
 
     @GetMapping("/email/{email}")
     public List<Fichaje> getFichajesPorEmail(@PathVariable String email) {
