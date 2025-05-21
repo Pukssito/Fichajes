@@ -38,4 +38,14 @@ public class AuthController {
         }
         return ResponseEntity.status(401).body("Credenciales inválidas");
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteUsuario(@PathVariable Integer id) {
+        boolean eliminado = authService.eliminarUsuarioPorId(id);
+        if (eliminado) {
+            return ResponseEntity.ok("Usuario eliminado correctamente");
+        } else {
+            return ResponseEntity.status(404).body("Usuario no encontrado");
+        }
+    }
 }

@@ -10,22 +10,69 @@ public class Fichaje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long usuarioId;
-
+    @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
 
-    private String tipo; // "ENTRADA" o "SALIDA"
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private TipoFichaje tipo;
 
-    // Getters y Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    @Column(columnDefinition = "TEXT")
+    private String comentario;
 
-    public Long getUsuarioId() { return usuarioId; }
-    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
-    public LocalDateTime getFechaHora() { return fechaHora; }
-    public void setFechaHora(LocalDateTime fechaHora) { this.fechaHora = fechaHora; }
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-    public String getTipo() { return tipo; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    // Getters y setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Long getUsuarioId() {
+        return usuario != null ? usuario.getId() : null;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public TipoFichaje getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoFichaje tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+
+    public enum TipoFichaje {
+        ENTRADA,
+        PAUSA_INICIO,
+        PAUSA_FIN,
+        SALIDA
+    }
 }

@@ -1,10 +1,14 @@
 package com.empresa.fichajes.Dao;
 
 import com.empresa.fichajes.entity.Fichaje;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.empresa.fichajes.entity.Usuario;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+@Repository
+public interface FichajeDao {
 
-public interface FichajeDao extends JpaRepository<Fichaje, Long> {
-    List<Fichaje> findByUsuarioId(Long usuarioId);
+    List<Fichaje> obtenerFichajesPorEmail(String email);
+    Usuario findByUsuarioId(Integer usuarioId);
+    Fichaje save(Fichaje fichaje);
 }
