@@ -1,4 +1,4 @@
-package com.empresa.fichajes.Dao;
+package com.empresa.fichajes.dao;
 
 import com.empresa.fichajes.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;

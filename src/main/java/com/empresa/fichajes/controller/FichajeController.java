@@ -1,7 +1,7 @@
 package com.empresa.fichajes.controller;
 
 import com.empresa.fichajes.entity.Fichaje;
-import com.empresa.fichajes.Dao.FichajeDao;
+import com.empresa.fichajes.dao.FichajeDao;
 import com.empresa.fichajes.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
-package com.empresa.fichajes.DaoImpl;
+package com.empresa.fichajes.dao.impl;
 
-import com.empresa.fichajes.Dao.FichajeDao;
+import com.empresa.fichajes.dao.FichajeDao;
 import com.empresa.fichajes.entity.Fichaje;
 import com.empresa.fichajes.entity.Usuario;
 import jakarta.persistence.EntityManager;
