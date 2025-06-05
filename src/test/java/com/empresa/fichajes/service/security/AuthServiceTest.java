@@ -1,6 +1,6 @@
 package com.empresa.fichajes.service.security;
 
-import com.empresa.fichajes.Dao.UsuarioDao;
+import com.empresa.fichajes.dao.UsuarioDao;
 import com.empresa.fichajes.entity.Usuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
