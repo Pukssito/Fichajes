@@ -33,6 +33,11 @@ public class FichajeDaoImpl implements FichajeDao  {
 
     @Override
     public Fichaje save(Fichaje fichaje) {
-        return null;
+        if (fichaje.getId() == null) {
+            em.persist(fichaje);
+            return fichaje;
+        } else {
+            return em.merge(fichaje);
+        }
     }
 }
