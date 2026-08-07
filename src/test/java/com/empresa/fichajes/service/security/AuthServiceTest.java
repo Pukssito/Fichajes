@@ -60,4 +60,22 @@ class AuthServiceTest {
         Optional<Usuario> resultPasswordIncorrecta = authService.login("test@example.com", "bad");
         assertTrue(resultPasswordIncorrecta.isEmpty());
     }
+
+    @Test
+    @DisplayName("el registro publico siempre crea usuarios con rol USER")
+    void registroPublicoSiempreCreaUsuarioNormal() {
+        Usuario usuario = new Usuario();
+        usuario.setEmail("new@example.com");
+        usuario.setPassword("secret");
+        usuario.setRol("ADMIN");
+
+        when(passwordEncoder.encode("secret")).thenReturn("hashed");
+        when(usuarioDao.save(usuario)).thenReturn(usuario);
+
+        Usuario saved = authService.registrar(usuario);
+
+        assertEquals("USER", saved.getRol());
+        assertEquals("hashed", saved.getPassword());
+        verify(usuarioDao).save(usuario);
+    }
 }

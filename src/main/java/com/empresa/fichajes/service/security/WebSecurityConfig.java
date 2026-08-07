@@ -21,11 +21,15 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .exceptionHandling(exceptions -> exceptions
+                        .authenticationEntryPoint((request, response, authException) -> response.sendError(401)))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
-                        .requestMatchers("/api/fichajes/**").permitAll() // ← Aquí se permite sin autenticación
+                        .requestMatchers("/api/fichajes/**").authenticated() // Los fichajes requieren JWT
+
                         .requestMatchers(HttpMethod.DELETE, "/api/auth/delete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
